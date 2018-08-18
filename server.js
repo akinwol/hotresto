@@ -11,11 +11,15 @@ app.use(bodyParser.json());
 
 //any input data ==>
 
+var reservations = [];
+var waitlist = [];
+
 //routes
 
 app.get("/", function(req, res){
     res.sendFile(path.join(__dirname, "index.html")); 
 });
+
 
 app.get("/reserve", function(req, res) {
     res.sendFile(path.join(__dirname, "reserve.html"))
@@ -23,7 +27,23 @@ app.get("/reserve", function(req, res) {
 
 app.get("/tables", function(req, res){
     res.sendFile(path.join(__dirname, "tables.html"))
-})
+});
+
+app.get("/api/reservations", function(req,res){
+    return res.json(reservations)
+});
+
+app.get("/api/waitlist", function(req,res){
+    return res.json(waitlist)
+});
+
+
+app.post("api/new", function(req,res){
+    var newReso = req.body;
+    newReso.routeName = newReso.name.replace(/\s+/g, "").toLowerCase();
+    reservation.push(newReso);
+    res.json(newReso);
+});
 
 //start server to listen 
 
