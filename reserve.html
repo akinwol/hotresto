@@ -71,7 +71,7 @@
 
 	    <footer class="footer">
 	      <div class="container">
-	        <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a> </p>
+	        <p><a href="/api/reservations">API Table Link</a> | <a href="/api/waitlist">API Wait List</a> </p>
 	      </div>
 	    </footer>
 
@@ -101,14 +101,16 @@
   	    function(data) {
 
   	    	
-  	    	if(data === true){
+  	    	if(data){
   	    		alert("Yay! You are officially booked!")
   	    	}
 
-  	    
-  	    	if(data === false){
+  	    	else if(data === false){
   	    		alert("Sorry you are on the wait list")
-  	    	}
+			  } 
+			  
+			  else {alert("Nothing happened")
+			  }; 
 
   	    	// Clear the form when submitting
       		$('#reserve_name').val("");
