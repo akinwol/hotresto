@@ -99,18 +99,19 @@
 
   	    $.post(currentURL + "/api/new", newReservation,
   	    function(data) {
+			  console.log("data: ", data); 
 
   	    	
   	    	if(data){
   	    		alert("Yay! You are officially booked!")
   	    	}
 
-  	    	else if(data === false){
+  	    	else {
   	    		alert("Sorry you are on the wait list")
 			  } 
 			  
-			  else {alert("Nothing happened")
-			  }; 
+			//   else {alert("Nothing happened")
+			//   }; 
 
   	    	// Clear the form when submitting
       		$('#reserve_name').val("");

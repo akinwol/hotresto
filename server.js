@@ -30,18 +30,19 @@ app.get("/tables", function(req, res){
 });
 
 app.get("/api/reservations", function(req,res){
+
     return res.json(reservations)
 });
+
 
 app.get("/api/waitlist", function(req,res){
     return res.json(waitlist)
 });
 
 
-app.post("api/new", function(req,res){
+app.post("/api/new", function(req,res){
     var newReso = req.body;
-    newReso.routeName = newReso.name.replace(/\s+/g, "").toLowerCase();
-    reservation.push(newReso);
+    reservations.push(newReso);
     res.json(newReso);
 });
 
