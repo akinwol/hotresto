@@ -62,6 +62,34 @@
 
 	</div>
 
-  
+  <script type='text/javascript'>
+    $.ajax({
+          url: '/api',
+          method: 'GET'
+        }).done(function(response) {
+          console.log(response.reservations);
+          if (response) {
+            var tableSection = $('#tableSection');
+            var waitlistSection = $('#waitlistSection');
+            for (var i = 0; i < response.reservations.length; i++) {
+              var tablePart = $('<div>').addClass('well');
+              var id = response.reservations[i].id;
+              tablePart.append($('<h2>').html("<span class='label label-primary'>1</span>|"));
+              tablePart.append($('<div>').append($('<h4>').text(id)));
 
+              tableSection.append(tablePart);
+            }
+            for (var i = 0; i < response.waitlist.length; i++) {
+              var tablePart = $('<div>').addClass('well');
+
+              var id = response.waitlist[i].id;
+              tablePart.append($('<h2>').html("<span class='label label-primary'>1</span>|"));
+              tablePart.append($('<div>').append($('<h4>').text(id)));
+
+              waitlistSection.append(tablePart);
+            }
+          }
+        });
+  </script>
+<!-- ///////////////////////////////////////////////////////// -->
 </body></html>
