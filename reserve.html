@@ -101,14 +101,16 @@
   	    function(data) {
 
   	    	
-  	    	if(data === true){
+  	    	if(data){
   	    		alert("Yay! You are officially booked!")
   	    	}
 
-  	    
-  	    	if(data === false){
+  	    	else if(data === false){
   	    		alert("Sorry you are on the wait list")
-  	    	}
+			  } 
+			  
+			  else {alert("Nothing happened")
+			  }; 
 
   	    	// Clear the form when submitting
       		$('#reserve_name').val("");
